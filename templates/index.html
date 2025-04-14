@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Play Prediction Demo</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-basketball-ball"></i> NBA Play Prediction</h1>
+            <p>Enter a sequence of basketball plays to predict what happens next</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="input-section">
+            <h2>Play-by-Play Sequence</h2>
+            <textarea id="play-input" rows="10" placeholder="Enter play-by-play sequence here..."></textarea>
+            
+            <div class="button-group">
+                <button id="predict-button" class="btn btn-primary">
+                    <i class="fas fa-magic"></i> Predict Next Play
+                </button>
+                <button id="example-button" class="btn btn-secondary">
+                    <i class="fas fa-lightbulb"></i> Load Example
+                </button>
+                <button id="clear-button" class="btn btn-secondary">
+                    <i class="fas fa-eraser"></i> Clear
+                </button>
+            </div>
+        </section>
+        
+        <section id="results-section" class="results-section">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Predicting next play...</p>
+            </div>
+            
+            <div id="error-message" class="error-message"></div>
+            
+            <div id="prediction-results"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Sports Play Inference Attention - NBA Play Prediction Demo</p>
+        </div>
+    </footer>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+</html> 
