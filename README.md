@@ -27,6 +27,15 @@ This project demonstrates a web-based interface for predicting NBA plays. It use
 ## Datasets
 The project includes several NBA play-by-play datasets:
 
+### Data Source
+The original data comes from the following Kaggle dataset:
+- **Dataset**: [NBA Play-by-Play Data 2018-2019](https://www.kaggle.com/datasets/schmadam97/nba-playbyplay-data-20182019)
+- **Creator**: schmadam97
+- **Contents**: Detailed play-by-play data for NBA games from multiple seasons (2015-2021)
+- **Primary File**: NBA_PBP_2018-19.csv
+
+This raw data was preprocessed to create context-target pairs for the prediction model, where each input is a sequence of plays and the target is the next play in the sequence.
+
 ### Main Datasets
 - `nba_sample.jsonl` - Sample dataset with NBA play sequences (115KB)
 - `nba_val.jsonl` - Validation dataset (278KB)
