@@ -19,6 +19,30 @@ This project demonstrates a web-based interface for predicting NBA plays. It use
   - `js/` - JavaScript for user interactions
 - `templates/` - HTML templates
 - `.env` - Environment variables for API keys
+- `data/` - NBA play-by-play datasets
+  - `azure/` - Azure-ready datasets
+    - `split/` - Split datasets for easier handling
+    - `split_exp/` - Experimental datasets with additional system prompts
+
+## Datasets
+The project includes several NBA play-by-play datasets:
+
+### Main Datasets
+- `nba_sample.jsonl` - Sample dataset with NBA play sequences (115KB)
+- `nba_val.jsonl` - Validation dataset (278KB)
+- `nba_train.jsonl` - Training dataset (2.1MB)
+
+### Split Datasets
+For easier handling, the main datasets have been split into smaller files:
+- `nba_sample_part1of4.jsonl` to `nba_sample_part4of4.jsonl` (~29KB each)
+- `nba_val_part1of4.jsonl` to `nba_val_part4of4.jsonl` (~70KB each)
+- `nba_train_part1of4.jsonl` to `nba_train_part4of4.jsonl` (~557KB each)
+
+### Experimental Datasets
+These datasets include enhanced system prompts for better performance:
+- `nba_sample_part1of4_exp.jsonl` to `nba_sample_part4of4_exp.jsonl`
+- `nba_val_part1of4_exp.jsonl` to `nba_val_part4of4_exp.jsonl`
+- `nba_train_part1of4_exp.jsonl` to `nba_train_part4of4_exp.jsonl`
 
 ## Setup Instructions
 
