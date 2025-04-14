@@ -5,6 +5,22 @@ A demonstration of an AI-powered NBA play-by-play prediction system using Azure 
 ## Project Overview
 This project demonstrates a web-based interface for predicting NBA plays. It uses a fine-tuned GPT-4o mini model on Azure OpenAI to analyze sequences of basketball plays and predict what will happen next.
 
+## Use Case Justification
+Sports play prediction represents an innovative application of transformer models beyond traditional text generation tasks. By predicting the next play in an NBA game sequence:
+
+1. We demonstrate the model's ability to understand complex sequential patterns in specialized domains
+2. The task requires understanding basketball-specific context, including team dynamics, player tendencies, game clock, and score situations
+3. It serves as a proof of concept for AI assistance in sports analysis, coaching, and broadcasting
+
+## Use Case Benefits
+This application offers several potential benefits:
+
+1. **Sports Broadcasting**: Enhancing live commentary with AI-powered predictions
+2. **Coaching Tools**: Helping coaches anticipate opponent strategies in game situations
+3. **Fan Engagement**: Creating interactive experiences for fans to predict and compare with AI
+4. **Sports Analytics**: Providing insights into game patterns and tendencies
+5. **Educational Value**: Teaching basketball strategy through AI-predicted outcomes
+
 ## Features
 - Input NBA play-by-play sequences
 - Get AI-generated predictions for the next play
@@ -36,6 +52,15 @@ The original data comes from the following Kaggle dataset:
 
 This raw data was preprocessed to create context-target pairs for the prediction model, where each input is a sequence of plays and the target is the next play in the sequence.
 
+### Dataset Justification
+This dataset was chosen for several compelling reasons:
+
+1. **Comprehensive Coverage**: Contains detailed play-by-play data for entire NBA seasons, providing a rich source of sequential patterns
+2. **Structured Format**: Each play has consistent formatting with quarter, time, team, action, and score information
+3. **Context Richness**: Contains sufficient context (player names, actions, game situations) that enables meaningful predictions
+4. **Volume**: With thousands of sequences, provides enough examples for fine-tuning a large language model
+5. **Real-world Applicability**: Based on actual professional games, making predictions relevant to real basketball scenarios
+
 ### Main Datasets
 - `nba_sample.jsonl` - Sample dataset with NBA play sequences (115KB)
 - `nba_val.jsonl` - Validation dataset (278KB)
@@ -52,6 +77,64 @@ These datasets include enhanced system prompts for better performance:
 - `nba_sample_part1of4_exp.jsonl` to `nba_sample_part4of4_exp.jsonl`
 - `nba_val_part1of4_exp.jsonl` to `nba_val_part4of4_exp.jsonl`
 - `nba_train_part1of4_exp.jsonl` to `nba_train_part4of4_exp.jsonl`
+
+## Model Selection
+
+### Chosen Model: GPT-4o mini (Azure OpenAI)
+For this project, we selected GPT-4o mini on Azure OpenAI for the following reasons:
+
+1. **Contextual Understanding**: Excels at understanding complex contexts in sequential data
+2. **Few-shot Learning Capability**: Can quickly adapt to new patterns with limited examples
+3. **Specialized Knowledge**: Retains general knowledge about basketball, teams, and players
+4. **Size Efficiency**: Smaller than full GPT-4o while maintaining strong performance on specialized tasks
+5. **API Accessibility**: Azure OpenAI provides stable API access for deployment
+
+### Model Fine-tuning Approach
+The model was fine-tuned using:
+- Specialized system prompts tailored to NBA play prediction
+- Context-target pairs from preprocessed NBA play-by-play data
+- Consistent formatting to enhance pattern recognition
+
+## Model Comparisons
+During development, several alternative models were considered:
+
+1. **T5-base**: 
+   - Pro: Specifically designed for text-to-text tasks
+   - Con: Smaller parameter count limited performance on complex basketball sequences
+
+2. **BART-large**:
+   - Pro: Strong performance on sequence-to-sequence tasks
+   - Con: Less domain-specific knowledge than larger models
+
+3. **GPT-3.5 Turbo**:
+   - Pro: Good general language capabilities
+   - Con: Less context window than GPT-4o mini
+
+4. **Local LLaMA models**:
+   - Pro: Full local control without API dependencies
+   - Con: Required more extensive fine-tuning and computational resources
+
+GPT-4o mini was ultimately selected for its optimal balance of performance, efficiency, and deployment ease.
+
+## Evaluation Process
+To evaluate the model's performance on NBA play prediction, we implemented the following approach:
+
+### Quantitative Metrics
+- **Prediction Accuracy**: Measuring exact matches between predicted and actual next plays
+- **Play Type Accuracy**: Evaluating if the model correctly predicts the general type of play (shot, pass, rebound, etc.)
+- **Rouge-L Score**: Measuring the longest common subsequence between predictions and ground truth
+- **Time/Position Accuracy**: Assessing the model's ability to maintain game flow context
+
+### Qualitative Evaluation
+- **Human Expert Review**: Basketball experts reviewing predictions for tactical plausibility
+- **Context Coherence**: Evaluating if predictions maintain consistency with game situation and score
+- **Interactive Testing**: Using the web interface to test varied input sequences and assess prediction quality
+
+### Refinement Strategy
+The fine-tuning process incorporated:
+- Iterative system prompt improvements based on performance analysis
+- Testing variations in temperature and top-p sampling parameters
+- Sample-efficient fine-tuning focusing on high-quality examples
 
 ## Setup Instructions
 
@@ -125,4 +208,10 @@ The application provides a simple API endpoint:
 - Flask
 - Requests
 - python-dotenv
-- Azure OpenAI API access 
+- Azure OpenAI API access
+
+## Future Improvements
+- Implement additional metrics for more comprehensive model evaluation
+- Experiment with different model architectures tailored to sports sequence prediction
+- Add visualization tools for analyzing prediction patterns and biases
+- Develop an expanded dataset covering more seasons and leagues 
